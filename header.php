@@ -48,15 +48,16 @@
 						<h1 class="span12"><a href="<?=bloginfo('url')?>"><?=bloginfo('name')?></a></h1>
 				</div>
 				<div class="row">
-
-					<?=wp_nav_menu(array(
-						'theme_location' => 'header-menu', 
-						'container'      => 'false', 
-						'menu_class'     => 'nav nav-pills span12', 
-						'menu_id'        => 'header-menu', 
-						'walker'         => new Bootstrap_Walker_Nav_Menu()
-						));
-					?>
+					<div class="span12">
+						<?=wp_nav_menu(array(
+							'theme_location' => 'header-menu', 
+							'container'      => 'false', 
+							'menu_class'     => 'menu', 
+							'menu_id'        => 'header-menu', 
+							'walker'         => new Bootstrap_Walker_Nav_Menu()
+							));
+						?>
+					</div>
 				</div>
 			</section>
 		</div>
