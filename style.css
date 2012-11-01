@@ -11,11 +11,9 @@ Version: v0.0.0
 #header h1 a { }
 #header h1 a:hover { color: #333; text-decoration:none; }
 #header section {border-bottom: 1px dotted black;}
-<<<<<<< HEAD
 #header h1 {margin-bottom:0;}
-=======
 *+html #header section {padding-bottom:15px;} /* IE7 fix */
->>>>>>> provost/minimal
+
 
 /* Header Menu and Footer Menus */
 ul.menu a{font-weight: normal; text-decoration: none; font-size: 16px; margin-right: 5px;}
@@ -43,9 +41,6 @@ ul.menu li:last-child:after, .last:after{content: none !important;}
 #footer-menu li:first-child {list-style-type:none;margin-left:0;}
 */
 
-<<<<<<< HEAD
-#footer-menu {border-top:1px dotted black;margin-top:20px;}
-=======
 #footer-menu {
 	width:100%;
 	overflow:hidden;
@@ -54,7 +49,6 @@ ul.menu li:last-child:after, .last:after{content: none !important;}
 	font-family: 'Helvetica-Neue', Helvetica, serif;
 	padding:10px 0;
 }
->>>>>>> provost/minimal
 
 /* Footer */
 #footer {margin-bottom:20px;}
