@@ -67,12 +67,11 @@ ul.menu li:last-child:after, .last:after{content: none !important;}
 #faculty-resources .faculty-award-programs .caption {font-weight:bold;}
 #faculty-resources .resource {margin-bottom:40px;}
 
-/* Academic Affairs */
-#academic-affairs {}
-#academic-affairs #org-chart {}
-#academic-affairs #org-chart a {color:#953801;}
-#academic-affairs #org-chart .name {font-weight:bold;display:block;}
-#academic-affairs #org-chart .row {margin-bottom:25px;}
+/* Org Chart */
+#org-chart {}
+#org-chart a {color:#953801;}
+#org-chart .name {font-weight:bold;display:block;}
+#org-chart .row {margin-bottom:25px;}
 
 /* Page Content */
 .page-content a {text-decoration:underline;}
