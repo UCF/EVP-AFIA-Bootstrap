@@ -41,17 +41,18 @@
 		<div class="container" id="header">
 			<section>
 				<div class="row">
-						<h1 class="span5"><a href="<?=bloginfo('url')?>"><?=bloginfo('name')?></a></h1>
-						<div class="span7">
-							<?=wp_nav_menu(array(
-								'theme_location' => 'header-menu', 
-								'container'      => 'false', 
-								'menu_class'     => 'nav nav-pills pull-right', 
-								'menu_id'        => 'header-menu', 
-								'walker'         => new Bootstrap_Walker_Nav_Menu()
-								));
-							?>
-						</div>
+						<h1 class="span12"><a href="<?=bloginfo('url')?>"><?=bloginfo('name')?></a></h1>
+				</div>
+				<div class="row">
+
+					<?=wp_nav_menu(array(
+						'theme_location' => 'header-menu', 
+						'container'      => 'false', 
+						'menu_class'     => 'nav nav-pills span12', 
+						'menu_id'        => 'header-menu', 
+						'walker'         => new Bootstrap_Walker_Nav_Menu()
+						));
+					?>
 				</div>
 			</section>
 		</div>

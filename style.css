@@ -8,10 +8,11 @@ Version: v0.0.0
 /* Header */
 #header {margin-top:20px;}
 #header section {border-bottom: 1px dotted black;}
+#header h1 {margin-bottom:0;}
 
 /* Header Menu and Footer Menus */
 #header-menu,
-#footer-menu {margin-bottom:0;margin-top:20px;font-size:15px;}
+#footer-menu {margin-bottom:0;font-size:15px;}
 #header-menu a,
 #footer-menu a {padding-left:0;margin-left:0;}
 #header-menu a:hover,
@@ -23,7 +24,7 @@ Version: v0.0.0
 #header-menu li:first-child,
 #footer-menu li:first-child {list-style-type:none;margin-top:3px;margin-left:0;}
 
-#footer-menu {border-top:1px dotted black;}
+#footer-menu {border-top:1px dotted black;margin-top:20px;}
 
 /* Footer */
 #footer {margin-bottom:20px;}
