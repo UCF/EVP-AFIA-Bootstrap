@@ -76,12 +76,9 @@
 		<div id="bottom" class="row">
 			<div class="span12">
 				<div class="row">
-					<h2 class="span12">Reporting to the Provost</h2>
-				</div>
-				<div class="row">
 					<!-- Colleges-->
 					<div id="home-colleges" class="span5">
-						<h3>Colleges</h3>
+						<h2>Reporting to the Executive Vice Provost</h2>
 						<?php foreach(get_posts(array(
 							'numberposts' => -1,
 							'orderby'     => 'post_title',
@@ -107,7 +104,7 @@
 					</div>
 					<!--Units -->
 					<div id="home-units" class="span4">
-						<h3>Academic&nbsp;Affairs&nbsp;Units</h3>
+						<h2>Academic Coordination and Laisan Activites</h2>
 						<?php foreach(get_posts(array(
 							'numberposts' => -1,
 							'orderby'     => 'post_title',
