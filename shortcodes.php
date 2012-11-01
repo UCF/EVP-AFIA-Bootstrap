@@ -398,19 +398,33 @@ function sc_org_chart($attrs) {
 			if($count > 0 && ($count % 4) == 0) {
 				echo '</div><div class="row">';
 			}
+			$department_text = get_post_meta($person->ID, 'profile_department_text', True);
+			$department_url  = get_post_meta($person->ID, 'profile_department_url', True);
+			$email           = get_post_meta($person->ID, 'profile_email', True);
 			?>
 			<div class="span2">
-			<a href="<?=get_permalink($person->ID)?>">
-			<?php
-				$img = get_the_post_thumbnail($person->ID);
-				if ($img):?>
-				<?=$img?>
-				<?php else:?>
-					<img src="<?=THEME_IMG_URL?>/no-photo.png" alt="Photo Unavailable" />
-				<?php endif;?>
-				<span class="name"><?=str_replace('', '&nbsp;', $person->post_title)?></span>
-			</a>
-			<span class="description"><?=get_post_meta($person->ID, 'profile_description', True)?></span>	
+				<?php
+					$img = get_the_post_thumbnail($person->ID);
+					if ($img):?>
+					<?=$img?>
+					<?php else:?>
+						<img src="<?=THEME_IMG_URL?>/no-photo.png" alt="Photo Unavailable" />
+					<?php endif;?>
+
+					<?php if($email != '') {
+						echo '<a href="'.$email.'">';
+					} ?>
+						<span class="name"><?=str_replace('', '&nbsp;', $person->post_title)?></span>
+					<?php if($email != '') {
+						echo '</a>';
+					} ?>
+				</a>
+				<span class="description">
+					<?=get_post_meta($person->ID, 'profile_description', True)?>
+					<? if($department_text != '') {
+						echo ', <a href="'.$department_url.'"">'.$department_text.'</a>';
+					} ?>
+				</span>
 			</div>
 			<?
 			$count++;

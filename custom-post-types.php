@@ -424,6 +424,24 @@ class Person extends CustomPostType
 					'id'      => $this->options('name').'_description',
 					'type'    => 'text',
 				),
+				array(
+					'name'    => 'Email',
+					'desc'    => '',
+					'id'      => $this->options('name').'_email',
+					'type'    => 'text',
+				),
+				array(
+					'name'    => 'Department Text',
+					'desc'    => '',
+					'id'      => $this->options('name').'_department_text',
+					'type'    => 'text',
+				),
+				array(
+					'name'    => 'Department URL',
+					'desc'    => '',
+					'id'      => $this->options('name').'_department_url',
+					'type'    => 'text',
+				),
 			);
 			return $fields;
 		}
