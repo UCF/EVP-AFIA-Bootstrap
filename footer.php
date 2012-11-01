@@ -1,7 +1,6 @@
 			<?=wp_nav_menu(array(
 				'theme_location' => 'footer-menu', 
 				'container'      => 'false', 
-				'menu_class'     => 'nav nav-pills', 
 				'menu_id'        => 'footer-menu', 
 				'fallback_cb'    => false,
 				'depth'          => 1,
@@ -11,7 +10,7 @@
 			<div id="footer">
 				<div class="row">
 					<div class="span3">
-						<a class="ignore-external" href="http://www.ucf.edu"><img src="<?=THEME_IMG_URL?>/logo.png" alt="" title="" /></a>
+						<a class="ignore-external" href="http://www.ucf.edu"><img src="<?=THEME_IMG_URL?>/ucf-large.png" alt="" title="" /></a>
 					</div>
 					<div class="span9" id="info">
 						<?php $options = get_option(THEME_OPTIONS_NAME);?>
@@ -32,8 +31,5 @@
 			</div>
 		</div>
 	</body>
-	<!--[if IE]>
-	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
 	<?="\n".footer_()."\n"?>
 </html>
