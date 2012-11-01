@@ -22,7 +22,11 @@ ul.menu {list-style: none; margin: 0; color: #6d6e71; padding: 10px 0 0 0; clear
 ul.menu li{display: inline-block; margin: 0 6px 16px 0; padding: 0; float: left;}
 ul.menu li:after{margin-left: 1px; font-size:20px;} 
 :root *> ul.menu li:after {content: "\2022";} /* stupid non-ie hack */
-ul.menu li:last-child:after, .last:after{content: none !important;}
+ul.menu li:last-child:after, .last:after{content: " " !important;}
+/* Chrome/Safari .last top spacing fix */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    ul.menu li.last:after{content: "" !important;} 
+}
 
 #header-menu {font-family:'Georgia',serif;}
 #header-menu,
@@ -86,19 +90,19 @@ ul.menu li:last-child:after, .last:after{content: none !important;}
 
 /* Home */
 #home.page-content {margin-top:20px;}
-#home #quote {font-size:20px;text-align:right;line-height:28px;padding-bottom:25px;}
-#home #announcements {font-size:14px;line-height:18px;padding-bottom:10px;}
+#home #quote p {font-size:15px;text-align:right;line-height:22px;padding-bottom:5px;}
+#home #announcements {font-size:14px;line-height:18px;padding-bottom:5px;}
 #home #announcements li {margin-bottom:10px;}
 #home #help-search {background-color:#E1E1E1;}
-#home #help-search section {padding:10px 10px 20px 30px; overflow:hidden;}
+#home #help-search section {padding:5px 10px 9px 30px; overflow:hidden;}
 #home #help-search label {
 	font-family:'Georgia', serif;
 	font-size:16px;
-	text-decoration:underline;
 	color:#C14D00; 
 	margin-bottom:2px;
 }
 #home #help-search .form-search { margin-bottom: 0; }
+*+html #home #help-search .form-search .btn {background-color:#fafafa;}
 #home #help {padding:15px;}
 #home #search {padding:15px;}
 #home #middle .span12 {
