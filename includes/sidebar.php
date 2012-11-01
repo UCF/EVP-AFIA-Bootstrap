@@ -19,3 +19,18 @@
 		?>
 	</div>
 </div>
+<?php if(!is_front_page()) { ?>
+<div class="row">
+	<div id="sidebar-academiclinks" class="<?php echo $width; ?>">
+		<h3>Need Help Finding</h3>
+		<?=wp_nav_menu(array(
+			'menu'           => 'Need Help Finding', 
+			'container'      => 'false', 
+			'menu_class'     => 'unstyled', 
+			'menu_id'        => '', 
+			'walker'         => new Bootstrap_Walker_Nav_Menu()
+			));
+		?>
+	</div>
+</div>
+<?php } ?>
