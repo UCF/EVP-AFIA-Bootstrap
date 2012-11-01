@@ -322,6 +322,20 @@ function sc_faculty_award_programs($attrs) {
 add_shortcode('sc-faculty-award-programs', 'sc_faculty_award_programs');
 
 function sc_org_chart($attrs) {
+	if(!isset($attrs['categories'])) {
+		return '';
+	}
+
+	$category_slugs = explode(' ', $attrs['categories']);
+	$categoryies    = array();
+
+	foreach($category_slugs as $slug) {
+		if(($category = get_category_by_slug($slug)) !== False) {
+			$categories[] = $category;
+		}
+	}
+
+
 	$deans_list = get_posts(array(
 		'numberposts' => 1,
 		'post_type'   => 'provost_form',
@@ -367,7 +381,15 @@ function sc_org_chart($attrs) {
 		'order'       => 'ASC',
 	)) : false;
 	
-	function display_people($people, $id=null){
+	function display_people($category){
+		$people = get_posts(array(
+			'numberposts' => -1,
+			'post_type'   => 'profile',
+			'category'    => $category->term_id,
+			'orderby'     => 'menu_order',
+			'order'       => 'ASC',
+		));
+
 		?>
 		<div class="row">
 		<?
@@ -398,20 +420,10 @@ function sc_org_chart($attrs) {
 	ob_start();
 	?>
 	<div id="org-chart">
-		<?php if ($academic_officers):?>
-		<h3><?=get_category_by_slug('academic-officers')->name ?> <small><a href="<?=Document::get_url($org_chart)?>">Download PDF <?=$org_chart->post_title?></a></small></h3>
-		<?php display_people($academic_officers, 'academic-officers');?>
-		<?php endif;?>
-		
-		<?php if ($college_deans):?>
-		<h3><?=get_category_by_slug('college-deans')->name ?> <small><a href="<?=Document::get_url($deans_list)?>">Download PDF <?=$deans_list->post_title?></a></small></h3>
-		<?php display_people($college_deans, 'college-deans');?>
-		<?php endif;?>
-		
-		<?php if ($administrative_staff):?>
-		<h3><?=get_category_by_slug('administrative-staff')->name ?></h3>
-		<?php display_people($administrative_staff, 'administrative-staff');?>
-		<?php endif;?>
+		<?php foreach($categories as $category) { ?>
+		<h3><?php echo $category->name ?></h3>
+		<?php display_people($category); ?>
+		<?php } ?>
 	</div>
 	<?
 	return ob_get_clean();
