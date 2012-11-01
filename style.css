@@ -72,6 +72,10 @@ ul.menu li:last-child:after, .last:after{content: none !important;}
 #org-chart a {color:#953801;}
 #org-chart .name {font-weight:bold;display:block;}
 #org-chart .row {margin-bottom:25px;}
+#org-chart .description a {color:#777;}
+#org-chart .description a:hover {color:#900;}
+#org-chart .description a:active {color:#C30202;}
+#org-chart .description a:visited {color:#999;}
 
 /* Page Content */
 .page-content a {text-decoration:underline;}
