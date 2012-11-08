@@ -104,7 +104,7 @@
 					</div>
 					<!--Units -->
 					<div id="home-units" class="span4">
-						<h2>Academic Coordination and Laisan Activites</h2>
+						<h2>Academic Coordination &amp; Liaison Activites</h2>
 						<?php foreach(get_posts(array(
 							'numberposts' => -1,
 							'orderby'     => 'post_title',
