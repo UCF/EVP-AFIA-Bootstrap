@@ -612,6 +612,7 @@ class Unit extends CustomPostType {
 		$add_new_item   = 'Add New College/Unit',
 		$edit_item      = 'Edit College/Unit',
 		$new_item       = 'New College/Unit',
+		$use_editor     = False,
 		$use_metabox    = True,
 		$use_thumbnails = True,
 		$taxonomies     = array('category');
