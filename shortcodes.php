@@ -443,3 +443,21 @@ function sc_org_chart($attrs) {
 	return ob_get_clean();
 }
 add_shortcode('sc-org-chart', 'sc_org_chart');
+
+
+/**
+ * Displays a single Document link (provost_form) by name
+ *
+ * [document-single name="My Download"]
+ *
+ **/
+function sc_document($attr) {
+	$name 		= $attr['name'] ? $attr['name'] : '';
+	$document	= get_page_by_title($name, 'OBJECT', 'provost_form');
+
+	if ($name) {
+		$html .= Document::toHTML($document);		
+		return $html;
+	}
+}
+add_shortcode('document-single', 'sc_document');
