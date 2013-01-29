@@ -260,14 +260,14 @@ class Document extends CustomPostType{
 	public function fields(){
 		$fields   = parent::fields();
 		$fields[] = array(
-			'name' => __('URL'),
-			'desc' => __('Associate this document with a URL.  This will take precedence over any uploaded file, so leave empty if you want to use a file instead.'),
+			'name' => 'URL',
+			'desc' => 'Associate this document with a URL.  This will take precedence over any uploaded file, so leave empty if you want to use a file instead.',
 			'id'   => $this->options('name').'_url',
 			'type' => 'text',
 		);
 		$fields[] = array(
-			'name'    => __('File'),
-			'desc'    => __('Associate this document with an already existing file.'),
+			'name'    => 'File',
+			'desc'    => 'Associate this document with an already existing file.',
 			'id'      => $this->options('name').'_file',
 			'type'    => 'file',
 		);
@@ -563,7 +563,6 @@ class Help extends CustomPostType {
 
 	public function fields() {
 		$id_prefix  = $this->options('name');
-		$documents  = new Document();
 		return array(
 			array(
 				'name' => 'url',
@@ -576,7 +575,7 @@ class Help extends CustomPostType {
 				'desc'    => 'You can define a url or select an existing form.',
 				'id'      => $id_prefix.'_forms',
 				'type'    => 'select',
-				'options' => $documents->get_objects_as_options()
+				'options' => Document::get_objects_as_options()
 			)
 		);
 	}
