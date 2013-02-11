@@ -1541,7 +1541,7 @@ function _show_meta_boxes($post, $meta_box){
 					$document_id = get_post_meta($post->ID, $field['id'], True);
 					if ($document_id){
 						$document = get_post($document_id);
-						$url      = wp_get_attachment_url($document->ID);
+						$url      = str_replace('https://', 'http://', wp_get_attachment_url($document->ID));
 					}else{
 						$document = null;
 					}
@@ -1559,7 +1559,7 @@ function _show_meta_boxes($post, $meta_box){
 						$action = 'media_replace';
 						$nonce_edit_url = wp_nonce_url( $media_edit_url, $action );
 						if (FORCE_SSL_ADMIN) {
-							$nonce_edit_url = str_replace("http:", "https:", $nonce_edit_url);
+							$nonce_edit_url = str_replace('http:', 'https:', $nonce_edit_url);
 						}
 					}
 				?>
