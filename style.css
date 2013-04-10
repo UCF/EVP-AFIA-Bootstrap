@@ -29,7 +29,7 @@ ul.menu li:last-child:after, .last:after{content: " " !important;}
 }
 ul.menu li a { display: inline-block; }
 
-#header-menu {font-family:'Georgia',serif;}
+#header-menu {font-family:'Georgia',serif; overflow: auto; padding-bottom: 10px;}
 #header-menu,
 #footer-menu {margin-bottom:0;font-size:15px;}
 #header-menu a,
@@ -45,7 +45,6 @@ ul.menu li a { display: inline-block; }
 #header-menu li:first-child,
 #footer-menu li:first-child {list-style-type:none;margin-left:0;}
 */
-
 #footer-menu {
 	width:100%;
 	overflow:hidden;
