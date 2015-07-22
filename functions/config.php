@@ -344,7 +344,7 @@ if ($theme_options['bootstrap_enable_responsive'] == 1) {
 # Scripts (output in footer)
 Config::$scripts = array(
 	array('admin' => True, 'src' => THEME_JS_URL.'/admin.js',),
-	'//universityheader.ucf.edu/bar/js/university-header.js',
+	array('name' => 'university-header', 'src' => '//universityheader.ucf.edu/bar/js/university-header.js'),
 	THEME_STATIC_URL.'/bootstrap/bootstrap/js/bootstrap.js',
 	array('name' => 'base-script',  'src' => THEME_JS_URL.'/webcom-base.js',),
 	THEME_STATIC_URL.'/js/script.js',
