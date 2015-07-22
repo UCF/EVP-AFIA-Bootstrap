@@ -33,7 +33,7 @@ add_action('after_setup_theme', '__init__');
 define('DEBUG', isset($_GET['debug'])); # Enable via get parameter
 define('THEME_URL', get_bloginfo('stylesheet_directory'));
 define('THEME_ADMIN_URL', get_admin_url());
-define('THEME_DIR', get_stylesheet_directory_uri());
+define('THEME_DIR', get_stylesheet_directory());
 define('THEME_INCLUDES_DIR', THEME_DIR.'/includes');
 define('THEME_STATIC_URL', THEME_URL.'/static');
 define('THEME_IMG_URL', THEME_STATIC_URL.'/img');
