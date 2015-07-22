@@ -294,4 +294,19 @@ function get_search_results(
 	
 	return $results;
 }
+
+function table_register_button( $buttons ) {
+	array_push( $buttons, 'separator', 'table' );
+	return $buttons;
+}
+
+add_filter( 'mce_buttons_2', 'table_register_button' );
+
+function table_register_tinymce_javascript( $plugin_array ) {
+	$plugin_array['table'] = THEME_JS_URL . '/tinymce/plugins/table/plugin.min.js';
+	return $plugin_array;
+}
+
+add_filter( 'mce_external_plugins', 'table_register_tinymce_javascript' );
+
 ?>

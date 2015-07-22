@@ -221,3 +221,33 @@ ul.menu .last:after {content: none !important;}
 	-webkit-border-radius: 5x; border-radius:5px;
 }
 .msie #profile img { border:1px solid #C5C5C5; }
+
+/* Table styles */
+table {   
+    border-collapse: collapse;
+    margin: 1em .5em 0em 0;
+    width: auto;
+}
+
+table th {
+    background: none repeat scroll 0 0 #fcecaa;
+    border: 1px solid #8d8d8d;
+    border-spacing:0;
+    margin: 0;
+    padding: 6px 10px;
+    text-align: center;
+}
+
+table tr {
+	background: none repeat scroll 0 0 #fff;
+}
+
+table tr:nth-child(even) {
+    background: none repeat scroll 0 0 #ffffe5;
+}
+
+table td {
+    /*border: 1px solid #c4c4c4;*/
+    margin: 0;
+    padding: 10px 10px;
+}
