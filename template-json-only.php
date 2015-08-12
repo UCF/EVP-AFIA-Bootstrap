@@ -2,7 +2,7 @@
 /**
  * Template Name: JSON Only
  **/
-disallow_direct_load('template-json-only.php');
+disallow_direct_load( 'template-json-only.php' );
 the_post();
 
 if ( $post ) {
@@ -15,13 +15,13 @@ if ( $post ) {
 
 	$json = array(
 		'title' => $post->post_title,
-		'content' => wpautop($post->post_content),
+		'content' => apply_filters( 'the_content', $post->post_content ),
 		'stylesheet' => $stylesheet_url
 	);
 
-	header('Content-Type:application/json');
+	header( 'Content-Type:application/json' );
 
-	echo json_encode($json);
+	echo json_encode( $json );
 }
 
 ?>
