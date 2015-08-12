@@ -2,7 +2,7 @@
 /**
  * Template Name: JSON Only
  **/
-disallow_direct_load('template-one-column.php');
+disallow_direct_load('template-json-only.php');
 the_post();
 
 if ( $post ) {
