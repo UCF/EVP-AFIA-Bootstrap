@@ -263,13 +263,13 @@ class Document extends CustomPostType{
 			'name' => 'URL',
 			'desc' => 'Associate this document with a URL.  This will take precedence over any uploaded file, so leave empty if you want to use a file instead.',
 			'id'   => $this->options('name').'_url',
-			'type' => 'text',
+			'type' => 'text'
 		);
 		$fields[] = array(
 			'name'    => 'File',
 			'desc'    => 'Associate this document with an already existing file.',
 			'id'      => $this->options('name').'_file',
-			'type'    => 'file',
+			'type'    => 'file'
 		);
 		return $fields;
 	}
@@ -384,7 +384,7 @@ class Page extends CustomPostType {
 				'name' => 'Hide Lower Section',
 				'desc' => 'This section normally contains the Flickr, News and Events widgets. The footer will not be hidden',
 				'id'   => $prefix.'hide_fold',
-				'type' => 'checkbox',
+				'type' => 'checkbox'
 			),
 				array(
 					'name' => 'Stylesheet',

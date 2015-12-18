@@ -183,9 +183,16 @@ abstract class Field{
  * @author Jared Lang
  **/
 abstract class ChoicesField extends Field{
+	protected function add_default_to_choices() {
+		if ( isset( $this->default ) && !array_key_exists( $this->default, $this->choices ) ) {
+			$this->choices = array( $this->default => '' ) + $this->choices;
+		}
+	}
+
 	function __construct($attr){
 		$this->choices = @$attr['choices'];
 		parent::__construct($attr);
+		$this->add_default_to_choices();
 	}
 }
 
@@ -288,20 +295,25 @@ class RadioField extends ChoicesField{
  *
  * @package default
  * @author Jared Lang
- **/
+ * */
 class CheckboxField extends ChoicesField{
-	function input_html(){
+	function input_html() {
 		ob_start();
-		?>
+?>
+	<?php if ( isset( $this->choices ) ) : ?>
 		<ul class="checkbox-list">
-			<?php $i = 0; foreach($this->choices as $key=>$value): $id = htmlentities($this->id).'_'.$i++;?>
+			<?php $i = 0; foreach ( $this->choices as $key=>$value ): $id = htmlentities( $this->id ).'_'.$i++;?>
 			<li>
-				<input<?php if(is_array($this->value) and in_array($value, $this->value)):?> checked="checked"<?php endif;?> type="checkbox" name="<?=htmlentities($this->id)?>[]" id="<?=$id?>" value="<?=htmlentities($value)?>" />
-				<label for="<?=$id?>"><?=htmlentities($key)?></label>
+				<input<?php if ( is_array( $this->value ) and in_array( $value, $this->value ) ):?> checked="checked"<?php endif;?> type="checkbox" name="<?php echo htmlentities( $this->id )?>[]" id="<?php echo $id?>" value="<?php echo htmlentities( $value )?>">
+				<label for="<?php echo $id?>"><?php echo htmlentities( $key )?></label>
 			</li>
 			<?php endforeach;?>
 		</ul>
-		<?php
+	<?php else : ?>
+		<input type="checkbox" name="<?php echo htmlentities( $this->id ); ?>" id="<?php echo $this->id; ?>" <?php echo ( $this->value ) ? ' checked="checked"' : ''; ?> />
+		<label for="<?php echo $this->id; ?>"><?php echo htmlentities( $this->name ); ?></label>
+	<?php endif; ?>
+<?php
 		return ob_get_clean();
 	}
 }
