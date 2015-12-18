@@ -132,7 +132,7 @@ abstract class CustomPostType{
 	 * descendants to add or modify metaboxes.
 	 **/
 	public function metabox(){
-		if ($this->options('use_metabox')){
+		if ( $this->options( 'use_metabox' ) ) {
 			return array(
 				'id'       => $this->options('name').'_metabox',
 				'title'    => __($this->options('singular_name').' Fields'),
