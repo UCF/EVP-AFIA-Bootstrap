@@ -1511,17 +1511,6 @@ function display_meta_box_field( $post_id, $field ) {
 	$field_obj = null;
 	$field['value'] = get_post_meta( $post_id, $field['id'], true );
 
-	// Fix inconsistencies between CPT field array keys and Field obj property names
-	// TODO update CPR field array keys to match Field obj property names
-	if ( isset( $field['desc'] ) ) {
-		$field['description'] = $field['desc'];
-		unset( $field['desc'] );
-	}
-	if ( isset( $field['options'] ) ) {
-		$field['choices'] = $field['options'];
-		unset( $field['options'] );
-	}
-
 	switch( $field['type'] ) {
 		case 'text':
 			$field_obj = new TextField( $field );
