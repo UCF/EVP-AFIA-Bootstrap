@@ -338,6 +338,28 @@ class FileField extends Field {
 		}
 	}
 
+	function get_nonce_edit_url() {
+		$nonce_edit_url = '';
+
+		include_once ABSPATH . 'wp-admin/includes/plugins.php';
+
+		if ( is_plugin_active( 'enable-media-replace/enable-media-replace.php' ) && !empty( $this->value ) ) {
+			// Give a direct link to the Enable Media Plugin replace screen.
+			$enable_media_replace_dir = 'enable-media-replace/enable-media-replace.php';
+
+			$media_edit_url = admin_url() . 'upload.php?page='.$enable_media_replace_dir.'&action=media_replace&attachment_id='.$this->value;
+
+			// Create a secure url (Enable Media Replace requires this)
+			$action = 'media_replace';
+			$nonce_edit_url = wp_nonce_url( $media_edit_url, $action );
+			if ( FORCE_SSL_ADMIN ) {
+				$nonce_edit_url = str_replace( 'http:', 'https:', $nonce_edit_url );
+			}
+		}
+
+		return $nonce_edit_url;
+	}
+
 	function input_html() {
 		$upload_link = esc_url( get_upload_iframe_src( null, $this->post_id ) );
 
@@ -359,6 +381,12 @@ class FileField extends Field {
 				<a class="meta-file-delete <?php if ( empty( $this->value ) ) { echo 'hidden'; } ?>" href="#">
 					Remove File
 				</a>
+				<?php if ( $edit_url = $this->get_nonce_edit_url() ) : ?>
+				<br>
+				<a target="_blank" class="button-secondary meta-file-edit <?php if ( empty( $this->value ) ) { echo 'hidden'; } ?>" href="<?php echo $edit_url; ?>">
+					Edit / Update File
+				</a>
+				<?php endif; ?>
 			</p>
 			<input class="meta-file-field" id="<?php echo htmlentities( $this->id ); ?>" name="<?php echo htmlentities( $this->id ); ?>" type="hidden" value="<?php echo htmlentities( $this->value ); ?>">
 		</div>
