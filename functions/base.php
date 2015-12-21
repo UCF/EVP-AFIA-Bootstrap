@@ -341,7 +341,7 @@ class FileField extends Field {
 	function get_nonce_edit_url() {
 		$nonce_edit_url = '';
 
-		include_once ABSPATH . 'wp-admin/includes/plugins.php';
+		include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
 		if ( is_plugin_active( 'enable-media-replace/enable-media-replace.php' ) && !empty( $this->value ) ) {
 			// Give a direct link to the Enable Media Plugin replace screen.
