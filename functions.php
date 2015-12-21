@@ -308,4 +308,22 @@ function table_register_tinymce_javascript( $plugin_array ) {
 
 add_filter( 'mce_external_plugins', 'table_register_tinymce_javascript' );
 
+function protocol_relative_attachment_url($url) {
+    if (is_ssl()) {
+        $url = str_replace('http://', 'https://', $url);
+    }
+    return $url;
+}
+add_filter('wp_get_attachment_url', 'protocol_relative_attachment_url');
+
+
+function trigger_edit_attachment( $attachment_id ) {
+	do_action( 'edit_attachment', $attachment_id );
+}
+
+include_once ABSPATH . 'wp-admin/includes/plugin.php';
+if ( is_plugin_active( 'enable-media-replace/enable-media-replace.php' ) ) {
+	add_action( 'enable-media-replace-upload-done', 'trigger_edit_attachment', 10, 1 );
+}
+
 ?>
