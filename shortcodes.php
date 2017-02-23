@@ -60,10 +60,6 @@ function sc_person_picture_list($atts) {
 							'objects_only' => True,
 						));
 
-	echo "<pre>";
-	print_r($people);
-	echo "</pre>";
-
 	ob_start();
 
 	?><div class="person-picture-list"><?
