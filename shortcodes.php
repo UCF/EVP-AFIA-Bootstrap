@@ -9,19 +9,19 @@ function sc_publication($attr, $content=null){
 	$pub      = @$attr['pub'];
 	$pub_name = @$attr['name'];
 	$pub_id   = @$attr['id'];
-	
+
 	if (!$pub and is_numeric($pub_id)){
 		$pub = get_post($pub);
 	}
 	if (!$pub and $pub_name){
 		$pub = get_page_by_title($pub_name, OBJECT, 'publication');
 	}
-	
+
 	$pub->url   = get_post_meta($pub->ID, "publication_url", True);
 	$pub->thumb = get_the_post_thumbnail($pub->ID, 'publication-thumb');
-	
+
 	ob_start(); ?>
-	
+
 	<div class="pub">
 		<a class="track pub-track" title="<?=$pub->post_title?>" data-toggle="modal" href="#pub-modal-<?=$pub->ID?>">
 			<?=$pub->thumb?>
@@ -33,7 +33,7 @@ function sc_publication($attr, $content=null){
 			<a href="#" class="btn" data-dismiss="modal">Close</a>
 		</div>
 	</div>
-	
+
 	<?php
 	return ob_get_clean();
 }
@@ -50,24 +50,24 @@ function sc_person_picture_list($atts) {
 	$join			= ($atts['join']) ? $atts['join'] : 'or';
 	$people 		= sc_object_list(
 						array(
-							'type' => 'person', 
+							'type' => 'profile',
 							'limit' => $limit,
 							'join' => $join,
-							'categories' => $categories, 
+							'categories' => $categories,
 							'org_groups' => $org_groups
-						), 
+						),
 						array(
 							'objects_only' => True,
 						));
-	
+
 	ob_start();
-	
+
 	?><div class="person-picture-list"><?
 	$count = 0;
 	foreach($people as $person) {
-		
+
 		$image_url = get_featured_image_url($person->ID);
-		
+
 		$link = ($person->post_content != '') ? True : False;
 		if( ($count % $row_size) == 0) {
 			if($count > 0) {
@@ -75,7 +75,7 @@ function sc_person_picture_list($atts) {
 			}
 			?><div class="row"><?
 		}
-		
+
 		?>
 		<div class="span2 person-picture-wrap">
 			<? if($link) {?><a href="<?=get_permalink($person->ID)?>"><? } ?>
@@ -292,7 +292,7 @@ function sc_faculty_award_programs($attrs) {
 	<div class="faculty-award-programs">
 		<h3>Faculty Award Programs</h3>
 		<div class="row">
-		<?php 
+		<?php
 			$count = 0;
 			foreach($programs as $program) {
 				if($count > 0 && ($count % 4) == 0 ) {
@@ -310,9 +310,9 @@ function sc_faculty_award_programs($attrs) {
 						);
 					?>
 				</div>
-		<?php 
+		<?php
 				$count++;
-			} 
+			}
 		?>
 		</div>
 	</div>
@@ -352,8 +352,8 @@ function sc_org_chart($attrs) {
 	if (count($org_chart)){
 		$org_chart = $org_chart[0];
 	}
-	
-	
+
+
 	$category = get_category_by_slug('college-deans');
 	$college_deans = ($category) ? get_posts(array(
 		'numberposts' => -1,
@@ -362,7 +362,7 @@ function sc_org_chart($attrs) {
 		'orderby'     => 'menu_order',
 		'order'       => 'ASC',
 	)) : false;
-	
+
 	$category = get_category_by_slug('academic-officers');
 	$academic_officers = ($category) ? get_posts(array(
 		'numberposts' => -1,
@@ -371,7 +371,7 @@ function sc_org_chart($attrs) {
 		'orderby'     => 'menu_order',
 		'order'       => 'ASC',
 	)) : false;
-	
+
 	$category = get_category_by_slug('administrative-staff');
 	$administrative_staff = ($category) ? get_posts(array(
 		'numberposts' => -1,
@@ -380,57 +380,7 @@ function sc_org_chart($attrs) {
 		'orderby'     => 'menu_order',
 		'order'       => 'ASC',
 	)) : false;
-	
-	function display_people($category){
-		$people = get_posts(array(
-			'numberposts' => -1,
-			'post_type'   => 'profile',
-			'category'    => $category->term_id,
-			'orderby'     => 'menu_order',
-			'order'       => 'ASC',
-		));
 
-		?>
-		<div class="row">
-		<?
-		$count = 0;
-		foreach($people as $person) {
-			if($count > 0 && ($count % 4) == 0) {
-				echo '</div><div class="row">';
-			}
-			$department_text = get_post_meta($person->ID, 'profile_department_text', True);
-			$department_url  = get_post_meta($person->ID, 'profile_department_url', True);
-			$email           = get_post_meta($person->ID, 'profile_email', True);
-			?>
-			<div class="span2">
-				<?php
-					$img = get_the_post_thumbnail($person->ID);
-					if ($img):?>
-					<?=$img?>
-					<?php else:?>
-						<img src="<?=THEME_IMG_URL?>/no-photo.png" alt="Photo Unavailable" />
-					<?php endif;?>
-
-					<?php if($email != '') {
-						echo '<a href="'.$email.'">';
-					} ?>
-						<span class="name"><?=str_replace('', '&nbsp;', $person->post_title)?></span>
-					<?php if($email != '') {
-						echo '</a>';
-					} ?>
-				</a>
-				<span class="description">
-					<?=get_post_meta($person->ID, 'profile_description', True)?>
-					<? if($department_text != '') {
-						echo ', <a href="'.$department_url.'"">'.$department_text.'</a>';
-					} ?>
-				</span>
-			</div>
-			<?
-			$count++;
-		}
-		?> </div> <?
-	}
 	ob_start();
 	?>
 	<div id="org-chart">
@@ -456,7 +406,7 @@ function sc_document($attr) {
 	$document	= get_page_by_title($name, 'OBJECT', 'provost_form');
 
 	if ($name) {
-		$html .= Document::toHTML($document);		
+		$html .= Document::toHTML($document);
 		return $html;
 	}
 }
