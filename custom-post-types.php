@@ -482,7 +482,7 @@ class Person extends CustomPostType
 					<tbody>
 				<?
 				foreach($people as $person) {
-					$email = get_post_meta($person->ID, 'person_email', True);
+					$email = get_post_meta($person->ID, 'profile_email', True);
 					$link = ($person->post_content == '') ? False : True; ?>
 						<tr>
 							<td class="name">
