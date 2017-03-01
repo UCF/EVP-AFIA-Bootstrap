@@ -222,8 +222,12 @@ ul.menu .last:after {content: none !important;}
 }
 .msie #profile img { border:1px solid #C5C5C5; }
 
+.person-picture-wrap {width:110px;float:left;margin-left:20px;margin-bottom:20px;}
+.person-picture-wrap a { font-weight:bold; margin-top: 10px; color: #953801; font-size: 13px; }
+.person-picture-wrap .description { font-size: 11px; line-height: 15px; }
+
 /* Table styles */
-table {   
+table {
     border-collapse: collapse;
     margin: 1em .5em 0em 0;
     width: auto;
