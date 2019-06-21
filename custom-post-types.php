@@ -562,6 +562,7 @@ class Help extends CustomPostType {
 
 
 	public function fields() {
+		$document = new Document;
 		$id_prefix  = $this->options('name');
 		return array(
 			array(
@@ -575,7 +576,7 @@ class Help extends CustomPostType {
 				'desc'    => 'You can define a url or select an existing form.',
 				'id'      => $id_prefix.'_forms',
 				'type'    => 'select',
-				'options' => Document::get_objects_as_options()
+				'choices' => $document->get_objects_as_options()
 			)
 		);
 	}
