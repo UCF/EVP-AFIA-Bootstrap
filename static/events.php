@@ -1,8 +1,8 @@
 <?php
 
-$events_url   = "http://events.ucf.edu";
+$events_url   = "https://events.ucf.edu";
 $query_string = http_build_query($_GET);
-$events_data  = file_get_contents($events_url.'?'.$query_string);
+$events_data  = wp_remote_retrieve_body( wp_remote_get( $events_url.'?'.$query_string ) );
 print $events_data;
 
 ?>
